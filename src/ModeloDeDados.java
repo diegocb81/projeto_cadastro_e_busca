@@ -7,10 +7,7 @@ public class ModeloDeDados {
 
     public static void main(String[] args) {
 
-        Contato contato = new Contato("Pelé", "987654321", "pele@gmail.com","Santos");
-
-        lista.add(contato);
-
+        adicionarContato(new Contato("Pelé", "987654321", "pele@gmail.com","Santos"));
         adicionarContato(new Contato("Maradona", "987654322", "maradona@gmail.com","Nápoli"));
         adicionarContato(new Contato("Ronaldinho", "987654323", "ronaldinho@gmail.com","Grêmio"));
         adicionarContato(new Contato("Messi", "987654324", "messi@gmail.com","Barcelona"));
@@ -18,17 +15,38 @@ public class ModeloDeDados {
         adicionarContato(new Contato("Garrincha", "987654326", "garrincha@gmail.com","Botafogo"));
         adicionarContato(new Contato("Zidane", "987654327", "zidane@gmail.com","Real Madrid"));
         adicionarContato(new Contato("Maradona Jr", "987654328", "maradonajr@gmail.com", "Boca Juniors"));
-
-       //removerContato("Zidane");
-       //imprimeListaCompleta();
+        //imprimeListaCompleta();
+        removerContato(args[0]);
        //buscaNome("Garrincha");
     }
 
     public static void adicionarContato(Contato contato){
         lista.add(contato);
     }
-    //public void removerContato(String nome){}
-    //public void imprimeListaCompleta(){}
+
+    public static void imprimeListaCompleta(){
+
+        for (Contato item : lista){
+            System.out.println("Nome: "+item.nome+
+                    "\nTel.: "+item.telefone+
+                    "\nemail: "+item.email+
+                    "\nEmpresa: "+item.empresa+"\n_____\n");
+        }
+
+    }
+
+    public static void removerContato(String nome){
+
+        for (int i = 0; i<lista.size(); i++){
+            String nomeVez = lista.get(i).nome;
+            if (nomeVez.equals(nome)){
+                lista.remove(i);
+                System.out.println("Nome Removido:" + nomeVez);
+                break;
+            }
+        }
+
+    }
     //public void buscaNome(String nome){}
 
 }
