@@ -15,9 +15,10 @@ public class ModeloDeDados {
         adicionarContato(new Contato("Garrincha", "987654326", "garrincha@gmail.com","Botafogo"));
         adicionarContato(new Contato("Zidane", "987654327", "zidane@gmail.com","Real Madrid"));
         adicionarContato(new Contato("Maradona Jr", "987654328", "maradonajr@gmail.com", "Boca Juniors"));
-        //imprimeListaCompleta();
+
+        imprimeListaCompleta();
         removerContato(args[0]);
-       //buscaNome("Garrincha");
+        buscaNome(args[0]);
     }
 
     public static void adicionarContato(Contato contato){
@@ -36,18 +37,37 @@ public class ModeloDeDados {
     }
 
     public static void removerContato(String nome){
-
+        boolean encontrado = false;
         for (int i = 0; i<lista.size(); i++){
             String nomeVez = lista.get(i).nome;
             if (nomeVez.equals(nome)){
+                encontrado = true;
                 lista.remove(i);
                 System.out.println("Nome Removido:" + nomeVez);
                 break;
             }
         }
+        if (!encontrado){
+            System.out.println("Nome não encontrado!");
+        }
 
     }
-    //public void buscaNome(String nome){}
+    public static void buscaNome(String nome){
+        boolean encontrado = false;
+
+        for (int i = 0; i<lista.size(); i++){
+            String nomeVez = lista.get(i).nome;
+            if (nomeVez.equals(nome)){
+                encontrado = true;
+                System.out.println("Nome Encontrado!\n\n"+lista.get(i).nome+"\n"+lista.get(i).telefone+"\n"+lista.get(i).email+"\n"+lista.get(i).empresa);
+                break;
+            }
+        }
+        if (!encontrado){
+            System.out.println("Nome não encontrado!");
+        }
+
+    }
 
 }
 
